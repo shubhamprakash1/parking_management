@@ -6,7 +6,7 @@ price 1.5
 total_slot 1
 vendor_id 1
 map "MyText"
-qr_code_id 1
+payment_url "MyString"
   end
 
 end

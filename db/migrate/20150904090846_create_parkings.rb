@@ -7,7 +7,7 @@ class CreateParkings < ActiveRecord::Migration
       t.integer :total_slot
       t.integer :vendor_id
       t.text :map
-      t.integer :qr_code_id
+      t.string :payment_url
 
       t.timestamps null: false
     end

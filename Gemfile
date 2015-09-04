@@ -44,4 +44,6 @@ group :test do
   gem 'database_cleaner'
   gem 'launchy'
   gem 'selenium-webdriver'
-end
+end 
+
+gem 'rqrcode_png'

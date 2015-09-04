@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Event:</strong>
+  <%= @parking.event_id %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @parking.price %>
+</p>
+
+<p>
+  <strong>Total slot:</strong>
+  <%= @parking.total_slot %>
+</p>
+
+<p>
+  <strong>Vendor:</strong>
+  <%= @parking.vendor_id %>
+</p>
+
+<p>
+  <strong>Map:</strong>
+  <%= @parking.map %>
+</p>
+
+<%= link_to 'Edit', edit_parking_path(@parking) %> |
+<%= link_to 'Back', parkings_path %>

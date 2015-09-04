@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @billing.user_id %>
+</p>
+
+<p>
+  <strong>Method:</strong>
+  <%= @billing.method %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @billing.status %>
+</p>
+
+<p>
+  <strong>Comments:</strong>
+  <%= @billing.comments %>
+</p>
+
+<p>
+  <strong>Customer:</strong>
+  <%= @billing.customer_id %>
+</p>
+
+<p>
+  <strong>Vendor:</strong>
+  <%= @billing.vendor_id %>
+</p>
+
+<p>
+  <strong>Parking:</strong>
+  <%= @billing.parking_id %>
+</p>
+
+<%= link_to 'Edit', edit_billing_path(@billing) %> |
+<%= link_to 'Back', billings_path %>

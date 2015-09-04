@@ -1,4 +1,9 @@
 class User < ActiveRecord::Base
+
+	has_many :billings
+	has_many :vendors
+	has_many :parkings, through: :vendors 
+
   enum role: [:user, :vendor, :admin]
   after_initialize :set_default_role, :if => :new_record?
 

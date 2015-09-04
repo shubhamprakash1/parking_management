@@ -5,11 +5,13 @@
 <table>
   <thead>
     <tr>
+      <th>Name</th>
       <th>Event</th>
       <th>Price</th>
       <th>Total slot</th>
       <th>Vendor</th>
       <th>Map</th>
+      <th>Qr code</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -17,11 +19,13 @@
   <tbody>
     <% @parkings.each do |parking| %>
       <tr>
+        <td><%= parking.name %></td>
         <td><%= parking.event_id %></td>
         <td><%= parking.price %></td>
         <td><%= parking.total_slot %></td>
         <td><%= parking.vendor_id %></td>
         <td><%= parking.map %></td>
+        <td><%= parking.qr_code_id %></td>
         <td><%= link_to 'Show', parking %></td>
         <td><%= link_to 'Edit', edit_parking_path(parking) %></td>
         <td><%= link_to 'Destroy', parking, method: :delete, data: { confirm: 'Are you sure?' } %></td>

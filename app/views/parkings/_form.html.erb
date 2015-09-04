@@ -12,6 +12,10 @@
   <% end %>
 
   <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
     <%= f.label :event_id %><br>
     <%= f.number_field :event_id %>
   </div>
@@ -30,6 +34,10 @@
   <div class="field">
     <%= f.label :map %><br>
     <%= f.text_area :map %>
+  </div>
+  <div class="field">
+    <%= f.label :qr_code_id %><br>
+    <%= f.number_field :qr_code_id %>
   </div>
   <div class="actions">
     <%= f.submit %>

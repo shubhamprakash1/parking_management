@@ -1,6 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>Name:</strong>
+  <%= @parking.name %>
+</p>
+
+<p>
   <strong>Event:</strong>
   <%= @parking.event_id %>
 </p>
@@ -23,6 +28,11 @@
 <p>
   <strong>Map:</strong>
   <%= @parking.map %>
+</p>
+
+<p>
+  <strong>Qr code:</strong>
+  <%= @parking.qr_code_id %>
 </p>
 
 <%= link_to 'Edit', edit_parking_path(@parking) %> |

@@ -69,6 +69,6 @@ class ParkingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def parking_params
-      params.require(:parking).permit(:event_id, :price, :total_slot, :vendor_id, :map)
+      params.require(:parking).permit(:name, :event_id, :price, :total_slot, :vendor_id, :map, :qr_code_id)
     end
 end

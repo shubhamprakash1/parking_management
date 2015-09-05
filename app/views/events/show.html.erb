@@ -1,24 +1,29 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+	<div class="container">
+	<p id="notice"><%= notice %></p>
+		<div class="col-md-10 col-xs-12 col-md-offset-1 col-xs-offset-1">
+			<p>
+			  <strong>Name:</strong>
+			  <%= @event.name %>
+			</p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @event.name %>
-</p>
+			<p>
+			  <strong>Description:</strong>
+			  <%= @event.description %>
+			</p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @event.description %>
-</p>
+			<p>
+			  <strong>Schedule at:</strong>
+			  <%= @event.schedule_at %>
+			</p>
 
-<p>
-  <strong>Schedule at:</strong>
-  <%= @event.schedule_at %>
-</p>
+			<p>
+			  <strong>Map:</strong>
+			  <%= @event.map %>
+			</p>
 
-<p>
-  <strong>Map:</strong>
-  <%= @event.map %>
-</p>
-
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
+			<%= link_to 'Edit', edit_event_path(@event), class: 'btn btn-default btn-success' %>
+			<%= link_to 'Back', events_path, class: 'btn btn-default btn-warning' %>
+		</div>
+	</div>
+</div>

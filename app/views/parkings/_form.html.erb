@@ -1,45 +1,49 @@
-<%= form_for(@parking) do |f| %>
-  <% if @parking.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@parking.errors.count, "error") %> prohibited this parking from being saved:</h2>
+<div class="row">
+  <div class="col-md-12 col-sm-12">
+    <%= form_for(@parking) do |f| %>
+      <% if @parking.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@parking.errors.count, "error") %> prohibited this parking from being saved:</h2>
 
-      <ul>
-      <% @parking.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+          <ul>
+          <% @parking.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+      <div class="field">
+        <%= f.label :name, class: "col-md-4 control-label" %><br>
+        <%= f.text_field :name, class: "form-control col-md" %>
+      </div>
+      <div class="field">
+        <%= f.label :event_id, class: "col-md-4 control-label" %><br>
+        <%= f.number_field :event_id, min: 0, class: "form-control col-md" %>
+      </div>
+      <div class="field">
+        <%= f.label :price, class: "col-md-4 control-label" %><br>
+        <%= f.text_field :price, class: "form-control col-md" %>
+      </div>
+      <div class="field">
+        <%= f.label :total_slot, class: "col-md-4 control-label" %><br>
+        <%= f.number_field :total_slot, min: 0, class: "form-control col-md" %>
+      </div>
+      <div class="field">
+        <%= f.label :vendor_id, class: "col-md-4 control-label" %><br>
+        <%= f.number_field :vendor_id, min: 0, class: "form-control col-md" %>
+      </div>
+      <div class="field">
+        <%= f.label :map, class: "col-md-4 control-label" %><br>
+        <%= f.text_area :map, class: "form-control col-md" %>
+      </div>
+      <div class="field">
+        <%= f.label :payment_url, class: "col-md-4 control-label" %><br>
+        <%= f.text_field :payment_url, class: "form-control col-md" %>
+      </div>
+      <div class="actions">
+        <%= f.submit "Submit", class: "btn btn-default btn-success" %>
+      </div>
+    <% end %>
   </div>
-  <div class="field">
-    <%= f.label :event_id %><br>
-    <%= f.number_field :event_id %>
-  </div>
-  <div class="field">
-    <%= f.label :price %><br>
-    <%= f.text_field :price %>
-  </div>
-  <div class="field">
-    <%= f.label :total_slot %><br>
-    <%= f.number_field :total_slot %>
-  </div>
-  <div class="field">
-    <%= f.label :vendor_id %><br>
-    <%= f.number_field :vendor_id %>
-  </div>
-  <div class="field">
-    <%= f.label :map %><br>
-    <%= f.text_area :map %>
-  </div>
-  <div class="field">
-    <%= f.label :payment_url %><br>
-    <%= f.text_field :payment_url %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>

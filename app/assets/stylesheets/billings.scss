@@ -1,3 +1,23 @@
 // Place all the styles related to the billings controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+td{
+	max-width: 170px;
+	word-wrap: break-word;
+}
+
+@media screen and (min-width: 768px) and (max-width: 980px) {
+	td{
+		max-width: 90px;
+		word-wrap: break-word;
+	}
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+	td{
+		max-width: 8px;
+		word-wrap: break-word;
+		white-space: pre-wrap!important;
+	}
+}

@@ -13,3 +13,19 @@
  *= require_tree .
  *= require_self
  */
+
+ nav {
+ 	font-size: 15px;
+ }
+ 
+ .navbar-nav {
+ 	float: right;
+ }
+
+ .control-label{
+ 	padding-left: 0px;
+ }
+
+.btn-success, .btn-primary, .btn-danger {
+	color: #fff!important;
+}

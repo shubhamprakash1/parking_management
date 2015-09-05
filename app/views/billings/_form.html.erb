@@ -1,45 +1,56 @@
-<%= form_for(@billing) do |f| %>
-  <% if @billing.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@billing.errors.count, "error") %> prohibited this billing from being saved:</h2>
+<div class="row">
+  <div class="col-md-12 col-sm-12">
+    <%= form_for(@billing) do |f| %>
+      <% if @billing.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@billing.errors.count, "error") %> prohibited this billing from being saved:</h2>
 
-      <ul>
-      <% @billing.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+          <ul>
+          <% @billing.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
 
-  <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.number_field :user_id %>
+      <div class="field">
+        <%= f.label :user_id, class: "col-md-4 control-label" %><br>
+        <%= f.number_field :user_id, min: 0, class: "form-control col-md" %>
+      </div>
+      <br>
+      <div class="field">
+        <%= f.label :method, class: "col-md-4 control-label" %><br>
+        <%= f.text_field :method, class: "form-control col-md" %>
+      </div>
+      <br>
+      <div class="field">
+        <%= f.label :status %><br>
+        <%= f.check_box :status %>
+      </div>
+      <br>
+      <div class="field">
+        <%= f.label :comments, class: "col-md-4 control-label" %><br>
+        <%= f.text_field :comments, class: "form-control col-md" %>
+      </div>
+      <br>
+      <div class="field">
+        <%= f.label :customer_id, class: "col-md-4 control-label" %><br>
+        <%= f.text_field :customer_id, class: "form-control col-md" %>
+      </div>
+      <br>
+      <div class="field">
+        <%= f.label :vendor_id, class: "col-md-4 control-label" %><br>
+        <%= f.number_field :vendor_id, min: 0, class: "form-control col-md" %>
+      </div>
+      <br>
+      <div class="field">
+        <%= f.label :parking_id, class: "col-md-4 control-label" %><br>
+        <%= f.number_field :parking_id, min: 0, class: "form-control col-md" %>
+      </div>
+      <br>
+      <div class="actions">
+        <%= f.submit 'Submit', class: "btn btn-default btn-success" %>
+      </div>
+    <% end %>
   </div>
-  <div class="field">
-    <%= f.label :method %><br>
-    <%= f.text_field :method %>
-  </div>
-  <div class="field">
-    <%= f.label :status %><br>
-    <%= f.check_box :status %>
-  </div>
-  <div class="field">
-    <%= f.label :comments %><br>
-    <%= f.text_field :comments %>
-  </div>
-  <div class="field">
-    <%= f.label :customer_id %><br>
-    <%= f.text_field :customer_id %>
-  </div>
-  <div class="field">
-    <%= f.label :vendor_id %><br>
-    <%= f.number_field :vendor_id %>
-  </div>
-  <div class="field">
-    <%= f.label :parking_id %><br>
-    <%= f.number_field :parking_id %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>

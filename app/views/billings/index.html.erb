@@ -1,39 +1,42 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <p id="notice"><%= notice %></p>
+  <div class="container">
+    <h1>Listing Billings</h1>
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <div class="col-md-12 col-xs-12">
+            <tr>
+              <th>User</th>
+              <th>Method</th>
+              <th>Status</th>
+              <th>Comments</th>
+              <th>Customer</th>
+              <th>Vendor</th>
+              <th>Parking</th>
+              <th colspan="3"></th>
+            </tr>
+          </div>
+        </thead>
 
-<h1>Listing Billings</h1>
+        <tbody>
+          <% @billings.each do |billing| %>
+            <tr>
+              <td><%= billing.user_id %></td>
+              <td><%= billing.method %></td>
+              <td><%= billing.status %></td>
+              <td><%= billing.comments %></td>
+              <td><%= billing.customer_id %></td>
+              <td><%= billing.vendor_id %></td>
+              <td><%= billing.parking_id %></td>
+              <td><%= link_to 'Show', billing, class: "btn btn-default btn-success" %></td>
+              <td><%= link_to 'Edit', edit_billing_path(billing), class: "btn btn-default btn-primary" %></td>
+              <td><%= link_to 'Destroy', billing, class: "btn btn-default btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+    </table>
 
-<table>
-  <thead>
-    <tr>
-      <th>User</th>
-      <th>Method</th>
-      <th>Status</th>
-      <th>Comments</th>
-      <th>Customer</th>
-      <th>Vendor</th>
-      <th>Parking</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+    <br>
 
-  <tbody>
-    <% @billings.each do |billing| %>
-      <tr>
-        <td><%= billing.user_id %></td>
-        <td><%= billing.method %></td>
-        <td><%= billing.status %></td>
-        <td><%= billing.comments %></td>
-        <td><%= billing.customer_id %></td>
-        <td><%= billing.vendor_id %></td>
-        <td><%= billing.parking_id %></td>
-        <td><%= link_to 'Show', billing %></td>
-        <td><%= link_to 'Edit', edit_billing_path(billing) %></td>
-        <td><%= link_to 'Destroy', billing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Billing', new_billing_path %>
+    <%= link_to 'New Billing', new_billing_path %>

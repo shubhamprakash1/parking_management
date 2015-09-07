@@ -2,8 +2,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-@import 'bootstrap-datetimepicker';
-
 // make all images responsive by default
 img {
   @extend .img-responsive;
@@ -37,10 +35,11 @@ img {
 // to make views framework-neutral
 main {
   @extend .container;
-  background-color: #eee;
+  background:linear-gradient(#87e0fd,#53cbf1);
   padding-bottom: 80px;
   width: 100%;
   margin-top: 51px; // accommodate the navbar
+  min-height: 620px;
   }
 section {
   @extend .row;

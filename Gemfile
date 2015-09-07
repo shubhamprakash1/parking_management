@@ -7,6 +7,7 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'rqrcode_png'
 gem 'dragonfly'
+gem 'prawn'
 group :development, :test do
   gem 'byebug'
 end

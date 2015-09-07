@@ -11,8 +11,17 @@ class ParkingsController < ApplicationController
   # GET /parkings/1.json
   def show
     @parking = Parking.find(params[:id])
-   # qr_code_img = RQRCode::QRCode.new(@parking.payment_url, :size => 20, :level => :h ).to_img
-  #  @parking.update_attribute :qr_code, qr_code_img.to_string
+   # qr_code_img = RQRCode::QRCode.new(@parking.payment_url, :size => 35, :level => :h ).to_img
+   # @parking.update_attribute :qr_code, qr_code_img.to_string
+   # VendorNotifier.send_qrcode_generated(@parking).deliver
+    
+    respond_to do |format|
+      format.html
+      format.pdf do
+        pdf = ReportPdf.new(@parking)
+        send_data pdf.render, filename: 'parking_QRcode.pdf', type: 'application/pdf'
+      end
+    end
   end
 
   # GET /parkings/new

@@ -13,4 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-sprockets
+//= html5-qrcode.js
+//= html5-qrcode.min.js
+//= jsqrcode-combined.min.js
 //= require_tree .

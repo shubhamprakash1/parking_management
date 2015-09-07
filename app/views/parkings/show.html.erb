@@ -37,6 +37,11 @@
         <%= @parking.payment_url %>
       </p>
 
+      <p>
+        <strong>Qr Code:</strong>
+        <%= image_tag @parking.qr_code.url %>
+      </p>
+
       <%= link_to 'Edit', edit_parking_path(@parking), class: 'btn btn-default btn-success' %>
       <%= link_to 'Back', parkings_path, class: 'btn btn-default btn-warning' %>
     </div>

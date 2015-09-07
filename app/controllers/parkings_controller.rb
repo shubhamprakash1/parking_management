@@ -10,6 +10,9 @@ class ParkingsController < ApplicationController
   # GET /parkings/1
   # GET /parkings/1.json
   def show
+    @parking = Parking.find(params[:id])
+    qr_code_img = RQRCode::QRCode.new(@parking.payment_url, :size => 8, :level => :h ).to_img
+    @parking.update_attribute :qr_code, qr_code_img.to_string
   end
 
   # GET /parkings/new

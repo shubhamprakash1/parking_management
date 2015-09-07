@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.2.0'
+#ruby '2.2.0'
 gem 'rails', '4.2.4'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
@@ -46,4 +46,6 @@ group :test do
   gem 'database_cleaner'
   gem 'launchy'
   gem 'selenium-webdriver'
-end
+end   
+
+gem "paperclip", "~> 4.3"

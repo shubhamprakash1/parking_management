@@ -1,0 +1,74 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>First name:</strong>
+  <%= @payment.first_name %>
+</p>
+
+<p>
+  <strong>Last name:</strong>
+  <%= @payment.last_name %>
+</p>
+
+<p>
+  <strong>Last4:</strong>
+  <%= @payment.last4 %>
+</p>
+
+<p>
+  <strong>Card security code:</strong>
+  <%= @payment.card_security_code %>
+</p>
+
+<p>
+  <strong>Credit card number:</strong>
+  <%= @payment.credit_card_number %>
+</p>
+
+<p>
+  <strong>Expiration month:</strong>
+  <%= @payment.expiration_month %>
+</p>
+
+<p>
+  <strong>Expiration year:</strong>
+  <%= @payment.expiration_year %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @payment.amount %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @payment.amount %>
+</p>
+
+<p>
+  <strong>Success:</strong>
+  <%= @payment.success %>
+</p>
+
+<p>
+  <strong>Authorization code:</strong>
+  <%= @payment.authorization_code %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @payment.user_id %>
+</p>
+
+<p>
+  <strong>Notify:</strong>
+  <%= @payment.notify %>
+</p>
+
+<p>
+  <strong>Parking:</strong>
+  <%= @payment.parking_id %>
+</p>
+
+<%= link_to 'Edit', edit_payment_path(@payment) %> |
+<%= link_to 'Back', payments_path %>

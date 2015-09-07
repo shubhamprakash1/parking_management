@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-md-12 col-sm-12">
-    <%= form_for(@parking) do |f| %>
+    <%= form_for([@event, @parking]) do |f| %>
       <% if @parking.errors.any? %>
         <div id="error_explanation">
           <h2><%= pluralize(@parking.errors.count, "error") %> prohibited this parking from being saved:</h2>
@@ -18,10 +18,6 @@
         <%= f.text_field :name, class: "form-control col-md" %>
       </div>
       <div class="field">
-        <%= f.label :event_id, class: "col-md-4 control-label" %><br>
-        <%= f.number_field :event_id, min: 0, class: "form-control col-md" %>
-      </div>
-      <div class="field">
         <%= f.label :price, class: "col-md-4 control-label" %><br>
         <%= f.text_field :price, class: "form-control col-md" %>
       </div>
@@ -30,16 +26,8 @@
         <%= f.number_field :total_slot, min: 0, class: "form-control col-md" %>
       </div>
       <div class="field">
-        <%= f.label :vendor_id, class: "col-md-4 control-label" %><br>
-        <%= f.number_field :vendor_id, min: 0, class: "form-control col-md" %>
-      </div>
-      <div class="field">
         <%= f.label :map, class: "col-md-4 control-label" %><br>
         <%= f.text_area :map, class: "form-control col-md" %>
-      </div>
-      <div class="field">
-        <%= f.label :payment_url, class: "col-md-4 control-label" %><br>
-        <%= f.text_field :payment_url, class: "form-control col-md" %>
       </div>
       <div class="actions">
         <%= f.submit "Submit", class: "btn btn-default btn-success" %>

@@ -3,8 +3,9 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 td{
-	max-width: 170px;
+	max-width: 190px;
 	word-wrap: break-word;
+	min-width:100px;
 }
 
 @media screen and (min-width: 768px) and (max-width: 980px) {

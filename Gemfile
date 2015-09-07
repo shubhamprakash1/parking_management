@@ -48,3 +48,4 @@ group :test do
 end   
 
 gem "paperclip", "~> 4.3"
+gem 'bootstrap-datetimepicker-rails', '~> 0.0.11'

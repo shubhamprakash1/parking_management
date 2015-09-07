@@ -10,7 +10,7 @@
               <th>Name</th>
               <th>Description</th>
               <th>Schedule at</th>
-              <th colspan="4"></th>
+              <th colspan="1"></th>
             </tr>
           </div>
         </thead>
@@ -21,10 +21,9 @@
               <td><%= event.name %></td>
               <td><%= event.description %></td>
               <td><%= event.schedule_at %></td>
-              <td><%= link_to 'Add Parking', new_event_parking_path(event), class: "btn btn-default btn-success" %></td> 
-              <td><%= link_to 'Show', event, class: "btn btn-default btn-success" %></td>
-              <td><%= link_to 'Edit', edit_event_path(event), class: "btn btn-default btn-primary" %></td>
-              <td><%= link_to 'Destroy', event, class: "btn btn-default btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <td><%= link_to 'Add Parking', new_event_parking_path(event), class: "glyphicon glyphicon-plus-sign margin-15" %>
+              <%= link_to 'Edit', edit_event_path(event), class: "glyphicon glyphicon-edit margin-15" %>
+              <%= link_to 'Destroy', event, class: "glyphicon glyphicon-remove margin-15", method: :delete, data: { confirm: 'Are you sure?' } %></td>
             </tr>
           <% end %>
         </tbody>

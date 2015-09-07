@@ -12,6 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require bootstrap-datetimepicker
+//= require locales/bootstrap-datetimepicker.<locale>.js>
 //= require bootstrap-sprockets
 //= html5-qrcode.js
 //= html5-qrcode.min.js

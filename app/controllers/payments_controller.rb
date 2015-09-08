@@ -1,6 +1,6 @@
 class PaymentsController < ApplicationController
   before_action :set_payment, only: [:show, :edit, :update, :destroy]
-
+  layout 'visitors'
   # GET /payments
   # GET /payments.json
   def index
@@ -13,7 +13,8 @@ class PaymentsController < ApplicationController
   end
 
   # GET /payments/new
-  def new
+  def new  
+    @parking = Parking.find_by_token(params[:token])
     @payment = Payment.new
   end
 
@@ -28,7 +29,7 @@ class PaymentsController < ApplicationController
 
     respond_to do |format|
       if @payment.save
-        format.html { redirect_to @payment, notice: 'Payment was successfully created.' }
+        format.html { redirect_to root_path , notice: 'Payment was successfully created. Vender will be notified.' }
         format.json { render :show, status: :created, location: @payment }
       else
         format.html { render :new }

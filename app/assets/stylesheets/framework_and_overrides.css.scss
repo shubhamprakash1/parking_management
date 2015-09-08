@@ -33,14 +33,7 @@ img {
   }
 // apply styles to HTML elements
 // to make views framework-neutral
-main {
-  @extend .container;
-  background:linear-gradient(#87e0fd,#53cbf1);
-  padding-bottom: 80px;
-  width: 100%;
-  margin-top: 51px; // accommodate the navbar
-  min-height: 620px;
-  }
+
 section {
   @extend .row;
   margin-top: 20px;

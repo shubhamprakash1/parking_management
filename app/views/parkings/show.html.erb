@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row hidden-print">
   <div class="container">
   <p id="notice"><%= notice %></p>
     <div class="col-md-10 col-xs-12 col-md-offset-1 col-xs-offset-1">
@@ -41,9 +41,49 @@
         <strong>Qr Code:</strong>
         <%= image_tag @parking.qr_code.url %>
       </p>
-
+      <%= link_to 'Download', "/siteparking/download/#{@parking.id}", class: 'btn btn-default btn-success' %>  
       <%= link_to 'Edit', edit_parking_path(@parking), class: 'btn btn-default btn-success' %>
-      <%= link_to 'Back', parkings_path, class: 'btn btn-default btn-warning' %>
+      <%= link_to 'Back', parkings_path, class: 'btn btn-default btn-warning' %>  
+         <button class="btn btn-info pull-right btn-lg hidden-print" type="button" onclick="window.print();">
+          Print
+        </button>
+    </div>
+  </div>
+</div> 
+
+
+<div class="row visible-print-block">
+  <div class="container">
+  <p id="notice"><%= notice %></p>
+    <div class="col-md-10 col-xs-12 col-md-offset-1 col-xs-offset-1">
+      <p>
+        <strong>Name:</strong>
+        <%= @parking.name %>
+      </p>
+
+      <p>
+        <strong>Event:</strong>
+        <%= @parking.event.name if @parking.event %>
+      </p>
+
+      <p>
+        <strong>Price:</strong>
+        <%= @parking.price %>
+      </p>
+      
+      <p>
+        <strong>Payment url:</strong>
+        <%= @parking.payment_url %>
+      </p>
+
+      <p>
+        <strong>Qr Code:</strong>
+        <%= image_tag @parking.qr_code.url %>
+      </p>
+      
     </div>
   </div>
 </div>
+
+
+

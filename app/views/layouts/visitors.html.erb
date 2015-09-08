@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>   
+    <style>  
+    .gradient{   
+      /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#87e0fd+0,53cbf1+7,53cbf1+69,53cbf1+69 */
+      background: #87e0fd; /* Old browsers */
+      /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+      background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjODdlMGZkIiBzdG9wLW9wYWNpdHk9IjEiLz4KICAgIDxzdG9wIG9mZnNldD0iNyUiIHN0b3AtY29sb3I9IiM1M2NiZjEiIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSI2OSUiIHN0b3AtY29sb3I9IiM1M2NiZjEiIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSI2OSUiIHN0b3AtY29sb3I9IiM1M2NiZjEiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+      background: -moz-linear-gradient(-45deg, #87e0fd 0%, #53cbf1 7%, #53cbf1 69%, #53cbf1 69%); /* FF3.6+ */
+      background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,#87e0fd), color-stop(7%,#53cbf1), color-stop(69%,#53cbf1), color-stop(69%,#53cbf1)); /* Chrome,Safari4+ */
+      background: -webkit-linear-gradient(-45deg, #87e0fd 0%,#53cbf1 7%,#53cbf1 69%,#53cbf1 69%); /* Chrome10+,Safari5.1+ */
+      background: -o-linear-gradient(-45deg, #87e0fd 0%,#53cbf1 7%,#53cbf1 69%,#53cbf1 69%); /* Opera 11.10+ */
+      background: -ms-linear-gradient(-45deg, #87e0fd 0%,#53cbf1 7%,#53cbf1 69%,#53cbf1 69%); /* IE10+ */
+      background: linear-gradient(135deg, #87e0fd 0%,#53cbf1 7%,#53cbf1 69%,#53cbf1 69%); /* W3C */
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#87e0fd', endColorstr='#53cbf1',GradientType=1 ); /* IE6-8 fallback on horizontal gradient */
+    }
+    <!--[if gte IE 9]>
+      <style type="text/css">
+        .gradient {
+           filter: none;
+        }
+      </style>
+    <![endif]-->
+    
+    </style> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= content_for?(:title) ? yield(:title) : "Parking Management" %></title>
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Parking Management" %>">
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body style="margin-top:-51px;">
+     
+      <%#= render 'layouts/navigation' %>
+  
+    <main role="main"> 
+      
+      <div class="container" style="text-align:center;">
+         <%= render 'layouts/messages' %>   
+        <div style="width:400px;margin:auto">
+       <%= yield %>   
+         </div>
+      </div>
+    </main>
+  </body>
+</html>

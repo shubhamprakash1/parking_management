@@ -7,6 +7,10 @@ class VisitorsController < ApplicationController
   def index
     source = "http://localhost:3000/api/parkings.json"
     # @data = JSON.parse(JSON.open(source))
+  end  
+  
+  def parkings   
+     @parkings = Parking.all      
   end
 
 end

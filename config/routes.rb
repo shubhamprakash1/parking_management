@@ -13,7 +13,8 @@ Rails.application.routes.draw do
   
   get '/siteparking/sitepayments/:token', to: 'payments#new'  
   get '/siteparking/download/:id', to: 'parkings#download' 
-  get '/scanqrcode', to: 'visitors#scan_qr_code'  
+  get '/scanqrcode', to: 'visitors#scan_qr_code' 
+  get '/scanqrcodeparking', to: 'visitors#parkings' 
   root to: 'visitors#index'
   devise_for :users
   resources :users

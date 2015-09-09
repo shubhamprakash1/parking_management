@@ -102,7 +102,10 @@ parking.price = '20'
 parking.total_slot = '5'
 parking.vendor_id = '1'
 parking.map = 'https://www.google.co.in/maps/place/Sikandra+Rd,+Supreme+Court,+Mandi+House,+New+Delhi,+Delhi+110001/@28.6252423,77.2403453,17z/data=!3m1!4b1!4m2!3m1!1s0x390cfd2b367744a3:0xd9e28710fec42cc9?hl=en'
-parking.payment_url = 'https://www.paypal.com/in/webapps/mpp/home'
+pay_url = 'http://192.241.218.243/' + 'siteparking/sitepayments/' +  Parking.generate_token 
+parking.payment_url = pay_url  
+qr_code_img = RQRCode::QRCode.new(parking.payment_url, :size => 40, :level => :h ).to_img
+parking.qr_code = qr_code_img.to_string
 parking.save!
 
 parking = Parking.find_or_initialize_by(id: '2')
@@ -114,7 +117,10 @@ parking.price = '15'
 parking.total_slot = '4'
 parking.vendor_id = '2'
 parking.map = 'https://www.google.co.in/maps/place/Alirajpur,+Madhya+Pradesh+457887/@22.3054552,74.3541813,15z/data=!3m1!4b1!4m2!3m1!1s0x3961b6de60d4ec3f:0x1678a25c787d6993?hl=en'
-parking.payment_url = 'https://www.paypal.com/in/webapps/mpp/home'
+pay_url = 'http://192.241.218.243/' + 'siteparking/sitepayments/' +  Parking.generate_token 
+parking.payment_url = pay_url  
+qr_code_img = RQRCode::QRCode.new(parking.payment_url, :size => 40, :level => :h ).to_img
+parking.qr_code = qr_code_img.to_string
 parking.save!
 
 parking = Parking.find_or_initialize_by(id: '3')
@@ -125,7 +131,10 @@ parking.price = '25'
 parking.total_slot = '6'
 parking.vendor_id = '3'
 parking.map = 'https://www.google.co.in/maps/place/Arvi,+Maharashtra+442305/@20.6344762,79.1405189,17z/data=!3m1!4b1!4m2!3m1!1s0x3bd35bc6f9d6d87f:0x73c01c91f55c58d6?hl=en'
-parking.payment_url = 'https://www.paypal.com/in/webapps/mpp/home'
+pay_url = 'http://192.241.218.243/' + 'siteparking/sitepayments/' +  Parking.generate_token 
+parking.payment_url = pay_url  
+qr_code_img = RQRCode::QRCode.new(parking.payment_url, :size => 40, :level => :h ).to_img
+parking.qr_code = qr_code_img.to_string
 parking.save!
 
 parking = Parking.find_or_initialize_by(id: '4')
@@ -137,7 +146,10 @@ parking.price = '30'
 parking.total_slot = '4'
 parking.vendor_id = '4'
 parking.map = 'https://www.google.co.in/maps/place/Arvi,+Maharashtra+442305/@20.6344762,79.1405189,17z/data=!3m1!4b1!4m2!3m1!1s0x3bd35bc6f9d6d87f:0x73c01c91f55c58d6?hl=en'
-parking.payment_url = 'https://www.paypal.com/in/webapps/mpp/home'
+pay_url = 'http://192.241.218.243/' + 'siteparking/sitepayments/' +  Parking.generate_token 
+parking.payment_url = pay_url  
+qr_code_img = RQRCode::QRCode.new(parking.payment_url, :size => 40, :level => :h ).to_img
+parking.qr_code = qr_code_img.to_string
 parking.save!
 
 parking = Parking.find_or_initialize_by(id: '5')
@@ -148,7 +160,10 @@ parking.price = '20'
 parking.total_slot = '8'
 parking.vendor_id = '5'
 parking.map = 'https://www.google.co.in/maps/place/Arvi,+Maharashtra+442305/@20.6344762,79.1405189,17z/data=!3m1!4b1!4m2!3m1!1s0x3bd35bc6f9d6d87f:0x73c01c91f55c58d6?hl=en'
-parking.payment_url = 'https://www.paypal.com/in/webapps/mpp/home'
+pay_url = 'http://192.241.218.243/' + 'siteparking/sitepayments/' +  Parking.generate_token 
+parking.payment_url = pay_url  
+qr_code_img = RQRCode::QRCode.new(parking.payment_url, :size => 40, :level => :h ).to_img
+parking.qr_code = qr_code_img.to_string
 parking.save!
 
 parking = Parking.find_or_initialize_by(id: '6')
@@ -158,8 +173,11 @@ parking.event_id = '5'
 parking.price = '20'
 parking.total_slot = '8'
 parking.vendor_id = '1'
-parking.map = 'https://www.google.co.in/maps/place/Arvi,+Maharashtra+442305/@20.6344762,79.1405189,17z/data=!3m1!4b1!4m2!3m1!1s0x3bd35bc6f9d6d87f:0x73c01c91f55c58d6?hl=en'
-parking.payment_url = 'https://www.paypal.com/in/webapps/mpp/home'
+parking.map = 'https://www.google.co.in/maps/place/Arvi,+Maharashtra+442305/@20.6344762,79.1405189,17z/data=!3m1!4b1!4m2!3m1!1s0x3bd35bc6f9d6d87f:0x73c01c91f55c58d6?hl=en'   
+pay_url = 'http://192.241.218.243/' + 'siteparking/sitepayments/' +  Parking.generate_token 
+parking.payment_url = pay_url  
+qr_code_img = RQRCode::QRCode.new(parking.payment_url, :size => 40, :level => :h ).to_img
+parking.qr_code = qr_code_img.to_string
 parking.save!
 
 parking = Parking.find_or_initialize_by(id: '7')
@@ -170,7 +188,10 @@ parking.price = '20'
 parking.total_slot = '8'
 parking.vendor_id = '2'
 parking.map = 'https://www.google.co.in/maps/place/Arvi,+Maharashtra+442305/@20.6344762,79.1405189,17z/data=!3m1!4b1!4m2!3m1!1s0x3bd35bc6f9d6d87f:0x73c01c91f55c58d6?hl=en'
-parking.payment_url = 'https://www.paypal.com/in/webapps/mpp/home'
+pay_url = 'http://192.241.218.243/' + 'siteparking/sitepayments/' +  Parking.generate_token 
+parking.payment_url = pay_url  
+qr_code_img = RQRCode::QRCode.new(parking.payment_url, :size => 40, :level => :h ).to_img
+parking.qr_code = qr_code_img.to_string
 parking.save!
 
 parking = Parking.find_or_initialize_by(id: '8')
@@ -181,7 +202,10 @@ parking.price = '20'
 parking.total_slot = '8'
 parking.vendor_id = '2'
 parking.map = 'https://www.google.co.in/maps/place/Arvi,+Maharashtra+442305/@20.6344762,79.1405189,17z/data=!3m1!4b1!4m2!3m1!1s0x3bd35bc6f9d6d87f:0x73c01c91f55c58d6?hl=en'
-parking.payment_url = 'https://www.paypal.com/in/webapps/mpp/home'
+pay_url = 'http://192.241.218.243/' + 'siteparking/sitepayments/' +  Parking.generate_token 
+parking.payment_url = pay_url  
+qr_code_img = RQRCode::QRCode.new(parking.payment_url, :size => 40, :level => :h ).to_img
+parking.qr_code = qr_code_img.to_string
 parking.save!
 
 parking = Parking.find_or_initialize_by(id: '9')
@@ -192,7 +216,10 @@ parking.price = '20'
 parking.total_slot = '8'
 parking.vendor_id = '4'
 parking.map = 'https://www.google.co.in/maps/place/Arvi,+Maharashtra+442305/@20.6344762,79.1405189,17z/data=!3m1!4b1!4m2!3m1!1s0x3bd35bc6f9d6d87f:0x73c01c91f55c58d6?hl=en'
-parking.payment_url = 'https://www.paypal.com/in/webapps/mpp/home'
+pay_url =  'http://192.241.218.243/' + 'siteparking/sitepayments/' +  Parking.generate_token 
+parking.payment_url = pay_url  
+qr_code_img = RQRCode::QRCode.new(parking.payment_url, :size => 40, :level => :h ).to_img
+parking.qr_code = qr_code_img.to_string
 parking.save!
 
 vendor = Vendor.find_or_initialize_by(id: '1')

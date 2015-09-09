@@ -24,6 +24,10 @@
       <div class="field">
         <%= f.label :total_slot, class: "col-md-4 control-label" %><br>
         <%= f.number_field :total_slot, min: 0, class: "form-control" %>
+      </div> 
+      <div class="field">
+        <%= f.label :vendor_id, class: "col-md-4 control-label" %><br>
+        <%= f.select :vendor_id,  User.where(role: 1).collect {|p| [ p.name, p.id ] }, class: "form-control" %>
       </div>
       <div class="field">
         <%= f.label :map, class: "col-md-4 control-label" %><br>

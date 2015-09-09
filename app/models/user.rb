@@ -9,6 +9,10 @@ class User < ActiveRecord::Base
 
   def set_default_role
     self.role ||= :user
+  end 
+  
+  def name 
+    self.first_name
   end
 
   # Include default devise modules. Others available are:

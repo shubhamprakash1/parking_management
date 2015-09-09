@@ -5,6 +5,11 @@ class ParkingsController < ApplicationController
   # GET /parkings.json
   def index
     @parkings = Parking.all
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json  { render :json => @parkings }
+      format.xml  { render :xml => @parkings }
+    end
   end
 
   # GET /parkings/1

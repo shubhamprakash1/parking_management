@@ -1,12 +1,15 @@
 
-	<div class="row">
-		<div class="col-md-12">
-			<h3>Welcome On Auto Parking</h3>
-		</div>
-	</div>	
-	<div class="row">   
-		<div class="col-md-9">
-			<%= link_to "Scan QR Code", '/scanqrcode', class: 'btn btn-info btn-lg' %>
-		</div>
+<div class="row">
+	<div class="col-md-12">
+		<h3>Welcome On Auto Parking</h3>
 	</div>
-	
+</div>	
+<div class="row">   
+	<div class="col-md-7">
+		<%= link_to "Scan QR Code", '/scanqrcode', class: 'btn btn-info btn-lg' %>
+	</div>
+	<div class="col-md-5">
+		<%= link_to "Choose by parking", "#" , class: 'btn btn-info btn-lg' %>
+	</div>
+</div>
+

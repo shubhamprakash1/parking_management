@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  namespace :api do
+    resources :parkings
+  end
   resources :payments
   resources :parkings
   resources :events

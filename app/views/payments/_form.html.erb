@@ -4,46 +4,72 @@
       <h2><%= pluralize(@payment.errors.count, "error") %> prohibited this payment from being saved:</h2>
 
       <ul>
-      <% @payment.errors.full_messages.each do |message| %>
+        <% @payment.errors.full_messages.each do |message| %>
         <li><%= message %></li>
-      <% end %>
+        <% end %>
       </ul>
     </div>
   <% end %>
 
+  <div class="field">
+    <%= f.label :card_type, class: "col-md-12 control-label" %><br>
+    <div class="row">
+      <div class="col-md-2 col-md-offset-0">
+        <%= image_tag 'cc_visa-ed3fe5dd19d3d708031abb639324c23a.png' %>
+      </div>
+      <div class="col-md-2 col-md-offset-0">
+        <%= image_tag 'cc_discover-1c43466e9fcb00fb0a7f41e3fa7e2da6.png' %>
+      </div>
+      <div class="col-md-2 col-md-offset-0">
+        <%= image_tag 'cc_mc-8a1d5eba8868239d6648765ca81528aa.png' %>
+      </div>
+      <div class="col-md-2 col-md-offset-0">
+        <%= image_tag 'cc_amex-2526c9530508c2f6633c2d3097b70f35.png' %>
+      </div>
+    </div>
+  </div>
 
-    <div class="field">
-      <%= f.label :first_name, "Name", class: "col-md-12 control-label" %><br>
-      <%= f.text_field :first_name, class: "form-control" %>
+  <div class="field">
+    <%= f.label :first_name, "Name", class: "col-md-12 control-label" %><br>
+    <%= f.text_field :first_name, class: "form-control" %>
+  </div>
+  <div class="col-md-12">
+    <div class="row">
+      <div class="field col-md-7" style="padding-left: 0px;">
+        <%= f.label :credit_card_number, class: "control-label" %><br>
+        <%= f.text_field :credit_card_number, class: "form-control" %>
+      </div>
+
+      <div class="field col-md-5">
+        <%= f.label :card_security_code, class: "control-label" %><br>
+        <%= f.text_field :card_security_code, class: "form-control", style: "width: 100px;" %>
+      </div>
     </div>
-     <div class="field">
-      <%= f.label :credit_card_number, class: "col-md-12 control-label" %><br>
-      <%= f.text_field :credit_card_number, class: "form-control" %>
+  </div>
+
+  <div class="col-md-12">
+    <div class="row">
+      <div class="field col-md-4" style="padding-left: 0px;">
+        <%= f.label :expiration_month, class: " control-label" %><br>
+        <%= f.number_field :expiration_month,min: 1, max: 12, class: "form-control", style: "width: 110px;" %>
+      </div>
+      <div class="field col-md-8">
+        <%= f.label :expiration_year, class: "control-label" %><br>
+        <%= f.number_field :expiration_year,min: 2015, max: 2050, class: "form-control", style: "width: 110px " %>
+      </div> 
     </div>
-    
-    <div class="field">
-      <%= f.label :card_security_code, class: "col-md-12 control-label" %><br>
-      <%= f.text_field :card_security_code, class: "form-control" %>
-    </div>
-    
-    <div class="field">
-      <%= f.label :expiration_month, class: "col-md-12 control-label" %><br>
-      <%= f.number_field :expiration_month,min: 1, max: 12, class: "form-control" %>
-    </div>
-    <div class="field">
-      <%= f.label :expiration_year, class: "col-md-12 control-label" %><br>
-      <%= f.number_field :expiration_year,min: 2015, max: 2050, class: "form-control" %>
-    </div> 
-    
-    <div class="field">
-      <%=  number_to_currency @parking.price %>
-    </div> 
-     <%= f.hidden_field :amoumt, :value => @parking.price%> 
-     <%= f.hidden_field :parking_id, :value => @parking.id %> 
-    
-    <br>
-    <div class="actions">
-      <%= f.submit "Submit", class: "btn btn-default btn-success" %>
-    </div>
+  </div>
+
+  <div class="field">
+    <%= f.label :price_to_pay, class: "control-label" %>
+    &nbsp;&nbsp;
+    <%=  number_to_currency @parking.price %>
+  </div> 
+  <%= f.hidden_field :amount, :value => @parking.price%> 
+  <%= f.hidden_field :parking_id, :value => @parking.id %> 
+
+  <br>
+  <div class="actions">
+    <%= f.submit "Submit", class: "btn btn-default btn-success" %>
   </div>
 <% end %>

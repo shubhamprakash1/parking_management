@@ -1,0 +1,26 @@
+<div class="container" id="reciept">
+	<div class= "row">
+		<h2 style="text-align: center;"><ins>Auto Parking Payment Reciept</ins></h2><br/>
+
+		<div class="col-md-12 reciept-field">
+			<span id= "reciept-content">Parking:  </span><span id= "reciept-info"><%= @payment.parking.name %></span>
+		</div> <br/>
+
+		<div class="col-md-12 reciept-field">
+			<span id= "reciept-content">Vendor:  </span> <%= @user.first_name %> <%= @user.last_name %> </span>
+		</div> <br/>
+
+		<div class="col-md-12 reciept-field">
+			<span id= "reciept-content">Paid:  </span> $<%= number_with_precision(@payment.amount, :precision => 2) %>
+		</div> <br/>
+
+		<div class="col-md-12 reciept-field">
+			<span id= "reciept-content">Date:  </span> <%= @payment.created_at.to_date %>
+		</div> <br/>
+
+		<div class="col-md-12 reciept-field">
+			<span id= "reciept-content">Time:  </span> <%= @payment.created_at.strftime("%H:%M:%S") %>
+		</div> <br/>
+
+	</div>
+</div>

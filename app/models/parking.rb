@@ -4,6 +4,7 @@ class Parking < ActiveRecord::Base
 	has_many :vendors
 	has_many :users, through: :vendors
 	has_many :parking_slots 
+  has_many :payments
  
   dragonfly_accessor :qr_code   
   

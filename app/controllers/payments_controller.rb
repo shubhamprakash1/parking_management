@@ -29,7 +29,7 @@ class PaymentsController < ApplicationController
 
     respond_to do |format|
       if @payment.save
-        format.html { redirect_to root_path , notice: 'Payment was successfully created. Vender will be notified.' }
+        format.html { redirect_to paymentreciept_path(@payment) , notice: 'Payment was successfully created. Vender will be notified.' }
         format.json { render :show, status: :created, location: @payment }
       else
         format.html { render :new }
@@ -60,6 +60,11 @@ class PaymentsController < ApplicationController
       format.html { redirect_to payments_url, notice: 'Payment was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def reciept
+    @payment = Payment.find(params[:format].to_i)
+    @user = User.find(@payment.parking.vendor_id)
   end
 
   private

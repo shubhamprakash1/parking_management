@@ -1,5 +1,6 @@
-<div class="row">
+<div class="row" id="parking-form">
   <div class="col-md-12 col-sm-12">
+  <h1>New Parking</h1>
     <%= form_for([@event, @parking]) do |f| %>
       <% if @parking.errors.any? %>
         <div id="error_explanation">
@@ -26,7 +27,7 @@
         <%= f.number_field :total_slot, min: 0, class: "form-control" %>
       </div> 
       <div class="field">
-        <%= f.label :vendor_id, class: "col-md-4 control-label" %><br>
+        <%= f.label :vendor_id, class: "control-label" %><br>
         <%= f.select :vendor_id,  User.where(role: 1).collect {|p| [ p.name, p.id ] }, class: "form-control" %>
       </div>
       <div class="field">
@@ -37,5 +38,6 @@
         <%= f.submit "Submit", class: "btn btn-default btn-success" %>
       </div>
     <% end %>
+  <%= link_to 'Back', parkings_path %>
   </div>
 </div>

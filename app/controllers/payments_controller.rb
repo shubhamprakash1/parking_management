@@ -27,6 +27,23 @@ class PaymentsController < ApplicationController
   def create
     @payment = Payment.new(payment_params)
 
+    @amount = @payment.amount * 100
+
+    customer = Stripe::Customer.create(
+      :email => 'amitk7075@gmail.com',
+      :card  => params[:stripeToken]
+    )
+
+    charge = Stripe::Charge.create(
+      :customer    => customer.id,
+      :amount      => @amount,
+      :description => 'Rails Stripe customer',
+      :currency    => 'usd'
+    )
+
+    rescue Stripe::CardError => e
+      flash[:error] = e.message
+      
     respond_to do |format|
       if @payment.save
         format.html { redirect_to paymentreciept_path(@payment) , notice: 'Payment was successfully created. Vender will be notified.' }

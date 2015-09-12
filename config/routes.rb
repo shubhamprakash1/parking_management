@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :parkings
   resources :events
   resources :billings  
+  resources :charges
  
   resources :events  do
     resources :parkings 
@@ -15,7 +16,9 @@ Rails.application.routes.draw do
   get '/siteparking/download/:id', to: 'parkings#download' 
   get '/scanqrcode', to: 'visitors#scan_qr_code' 
   get '/scanqrcodeparking', to: 'visitors#parkings' 
-  root to: 'visitors#index'
+  get '/paymentreciept', to: 'payments#reciept'
+  root to: 'visitors#parkings'
+  # root to: 'visitors#index'
   devise_for :users
   resources :users
 end

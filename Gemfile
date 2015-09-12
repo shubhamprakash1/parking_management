@@ -8,6 +8,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'rqrcode_png'
 gem 'dragonfly'
 gem 'prawn'
+gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 group :development, :test do
   gem 'byebug'
 end

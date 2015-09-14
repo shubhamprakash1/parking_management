@@ -85,9 +85,9 @@
   <div class="field">
     <%= f.label :price_to_pay, class: "control-label" %>
     &nbsp;&nbsp;
-    <%=  number_to_currency @parking.price %>
-    <%= f.hidden_field :amount, :value => @parking.price%> 
-    <%= f.hidden_field :parking_id, :value => @parking.id %> 
+      <%=  number_to_currency @parking.price %>
+      <%= f.hidden_field :amount, :value => @parking.price%> 
+      <%= f.hidden_field :parking_id, :value => @parking.id %> 
   </div>
   <br>
   <div class="actions">

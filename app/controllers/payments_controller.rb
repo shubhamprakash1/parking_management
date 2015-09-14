@@ -65,19 +65,16 @@ class PaymentsController < ApplicationController
         :description => 'Autopass payment',
         :currency    => 'usd'
       )
+
+      if @payment.save
+       redirect_to success_payment_path(@payment), notice: 'Payment was successfully created. Vender will be notified.'
+      end
     rescue Stripe::CardError => e
+      redirect_to "/siteparking/sitepayments/#{@payment.parking.token}"
       flash[:error] = e.message
     end  
 
-    respond_to do |format|
-      if @payment.save
-        format.html { redirect_to success_payment_path(@payment), notice: 'Payment was successfully created. Vender will be notified.' }
-        format.json { render :show, status: :created, location: @payment }
-      else
-        format.html { render :new }
-        format.json { render json: @payment.errors, status: :unprocessable_entity }
-      end
-    end
+
   end
 
   # PATCH/PUT /payments/1

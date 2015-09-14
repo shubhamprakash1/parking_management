@@ -2,7 +2,11 @@ Rails.application.routes.draw do
   namespace :api do
     resources :parkings
   end
-  resources :payments
+  resources :payments do
+    member do
+      get '/success', to: 'payments#reciept'
+    end
+  end
   resources :parkings
   resources :events
   resources :billings  
@@ -16,7 +20,6 @@ Rails.application.routes.draw do
   get '/siteparking/download/:id', to: 'parkings#download' 
   get '/scanqrcode', to: 'visitors#scan_qr_code' 
   get '/scanqrcodeparking', to: 'visitors#parkings' 
-  get '/paymentreciept', to: 'payments#reciept'
   root to: 'visitors#parkings'
   # root to: 'visitors#index'
   devise_for :users

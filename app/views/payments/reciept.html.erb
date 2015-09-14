@@ -15,11 +15,11 @@
 		</div> <br/>
 
 		<div class="col-md-12 reciept-field">
-			<span id= "reciept-content">Date:  </span> <%= @payment.created_at.to_date %>
+			<span id= "reciept-content">Date:  </span> <%= @payment.created_at.in_time_zone('Eastern Time (US & Canada)').to_date %>
 		</div> <br/>
 
 		<div class="col-md-12 reciept-field">
-			<span id= "reciept-content">Time:  </span> <%= @payment.created_at.strftime("%H:%M:%S") %>
+			<span id= "reciept-content">Time:  </span> <%= @payment.created_at.in_time_zone('Eastern Time (US & Canada)').strftime("%H:%M:%S") %>
 		</div> <br/>
 
 	</div>

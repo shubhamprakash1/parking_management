@@ -1,5 +1,5 @@
 <%= form_for(@payment) do |f| %>
-  <!-- <span class="payment-errors"></span> -->
+  <span class="payment-errors"></span>
   <% if @payment.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@payment.errors.count, "error") %> prohibited this payment from being saved:</h2>
@@ -11,103 +11,122 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :card_type, "Card Type", class: "col-md-12 control-label" %><br>
+  <% if @customer.present? %>
     <div class="row">
+      <h4>We have found following saved card in your account.</h4>
+    </div>
+    <div class="row">  
       <div class="col-md-2 col-md-offset-0">
         <%= image_tag 'cc_visa-ed3fe5dd19d3d708031abb639324c23a.png' %>
       </div>
-      <div class="col-md-2 col-md-offset-0">
-        <%= image_tag 'cc_discover-1c43466e9fcb00fb0a7f41e3fa7e2da6.png' %>
-      </div>
-      <div class="col-md-2 col-md-offset-0">
-        <%= image_tag 'cc_mc-8a1d5eba8868239d6648765ca81528aa.png' %>
-      </div>
-      <div class="col-md-2 col-md-offset-0">
-        <%= image_tag 'cc_amex-2526c9530508c2f6633c2d3097b70f35.png' %>
+      <div class="col-md-8">
+        xxxx - xxxx - xxxx - <%= @customer.sources.data[0].last4 %>
       </div>
     </div>
-  </div>
-
-  <div class="field">
-    <%= f.label :first_name, "Name", class: "col-md-12 control-label" %><br>
-    <%= f.text_field :first_name, class: "form-control" %>
-  </div>
-  <div class="col-md-12">
-    <div class="row">
-      <div class="field col-md-7" style="padding-left: 0px;">
-        <%= f.label :credit_card_number, "Credit Card Number", class: "control-label" %><br>
-        <%= f.text_field :credit_card_number, class: "form-control" %>
-      </div>
-
-      <div class="field col-md-5">
-        <%= f.label :cc, "CC", class: "control-label" %><br>
-        <%= f.text_field :card_security_code, class: "form-control", style: "width: 50px;" %>
+    <br/>
+    <!-- <div class="row"> 
+      <div class="col-md-8">
+        <%= f.label :cc, "Enter cvv to authorize your saved card", class: "control-label" %><br>
+        <%= f.text_field :card_security_code, class: "form-control", data: {stripe: "cvc"},  style: "width: 50px;" %>
       </div>
     </div>
-  </div>
-
-  <div class="col-md-12">
-    <div class="row">
-      <div class="field col-md-4" style="padding-left: 0px;">
-        <%= f.label :expiration_month, "Expiration Month", class: " control-label" %><br>
-        <%= select_month nil, {add_month_numbers_true: true}, {name: nil, id: "card_month"}%>
-        <%#= f.number_field :expiration_month,min: 1, max: 12, class: "form-control", :placeholder => "MM", style: "width: 110px;" %>
+    <br/> -->
+  <% else %>
+    <div class="field">
+      <%= f.label :card_type, "Card Type", class: "col-md-12 control-label" %><br>
+      <div class="row">
+        <div class="col-md-2 col-md-offset-0">
+          <%= image_tag 'cc_visa-ed3fe5dd19d3d708031abb639324c23a.png' %>
+        </div>
+        <div class="col-md-2 col-md-offset-0">
+          <%= image_tag 'cc_discover-1c43466e9fcb00fb0a7f41e3fa7e2da6.png' %>
+        </div>
+        <div class="col-md-2 col-md-offset-0">
+          <%= image_tag 'cc_mc-8a1d5eba8868239d6648765ca81528aa.png' %>
+        </div>
+        <div class="col-md-2 col-md-offset-0">
+          <%= image_tag 'cc_amex-2526c9530508c2f6633c2d3097b70f35.png' %>
+        </div>
       </div>
-      <div class="field col-md-8">
-        <%= f.label :expiration_year, "Expiration Year", class: "control-label" %><br>
-        <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+35}, {name: nil, id: "card_year"}%>
-        <%#= f.number_field :expiration_year,min: 2015, max: 2050, class: "form-control", style: "width: 110px ", :placeholder => "YY" %>
-      </div> 
     </div>
-  </div>
 
+    <div class="field">
+      <%= f.label :first_name, "Name", class: "col-md-12 control-label" %><br>
+      <%= f.text_field :first_name, class: "form-control", data: {stripe: "name"} %>
+    </div>
+    <div class="col-md-12">
+      <div class="row">
+        <div class="field col-md-7" style="padding-left: 0px;">
+          <%= f.label :credit_card_number, "Credit Card Number", class: "control-label" %><br>
+          <%= f.text_field :credit_card_number, class: "form-control", data: {stripe: "number"} %>
+        </div>
+
+        <div class="field col-md-5">
+          <%= f.label :cc, "CC", class: "control-label" %><br>
+          <%= f.text_field :card_security_code, class: "form-control", data: {stripe: "cvc"},  style: "width: 50px;" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-12">
+      <div class="row">
+        <div class="field col-md-4" style="padding-left: 0px;">
+          <%= f.label :expiration_month, "Expiration Month", class: " control-label" %><br>
+          <!-- <input type="text" class="form-control" min="1" max="12" style="width: 110px;" data-stripe="exp-month"/> -->
+          <%= f.select :expiration_month, (1..12).map{|x| [x,x]}, {}, class: "form-control", style: "width:110px;", data: {stripe: "exp-month"} %>
+        </div>
+        <div class="field col-md-8">
+          <%= f.label :expiration_year, "Expiration Year", class: "control-label" %><br>
+          <%= f.select :expiration_year, (2015..2050).map{|x| [x,x]}, {}, class: "form-control", data: {stripe: "exp-year"}, style: "width:110px;" %>
+        </div> 
+      </div>
+    </div>
+  <% end %>
   <div class="field">
     <%= f.label :price_to_pay, class: "control-label" %>
     &nbsp;&nbsp;
     <%=  number_to_currency @parking.price %>
-  </div> 
-  <%= f.hidden_field :amount, :value => @parking.price%> 
-  <%= f.hidden_field :parking_id, :value => @parking.id %> 
-
+    <%= f.hidden_field :amount, :value => @parking.price%> 
+    <%= f.hidden_field :parking_id, :value => @parking.id %> 
+  </div>
   <br>
   <div class="actions">
     <%= f.submit "Secure Checkout",  id: "new_payment",  class: "btn btn-default btn-success" %>
   </div>
   <% end %>
 
+<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
   <script type="text/javascript">
-    jQuery(function($) {
-     
-        $('#new_payment').submit(function(event) {
-          var form = $('#new_payment');
-          // alert("hello...");
-          // Disable the submit button to prevent repeated clicks
-          form.find('button').prop('disabled', true);
+  //   Stripe.setPublishableKey('pk_test_oBqEqUCb9Q4OUrdnq9pT8HXx');
 
-          Stripe.card.createToken($form, stripeResponseHandler);
+  //   $('#new_payment').submit(function(event) {
+  //       // event.preventDefault();
 
-          // Prevent the form from submitting with the default action
-          return false;
-        });
-      
-    });
+  //       var form = $(this);
 
-    function stripeResponseHandler(status, response) {
-      var form = $('#new_payment');
+  //       // Disable the submit button to prevent repeated clicks
+  //       // form.find('button').prop('disabled', true);
 
-      if (response.error) {
-        // Show the errors on the form
-        form.find('.payment-errors').text(response.error.message);
-        form.find('button').prop('disabled', false);
-      } else {
-        // response contains id and card, which contains additional card details
-        var token = response.id;
-        // Insert the token into the form so it gets submitted to the server
-        form.append($('<input type="hidden" name="stripeToken" />').val(token));
-        // and submit
-        form.get(0).submit();
-      }
-    };
-  </script>
+  //       Stripe.card.createToken(form, stripeResponseHandler);
+
+  //       // Prevent the form from submitting with the default action
+  //       return false;
+  //   });
+    
+  //   // function stripeResponseHandler(status, response) {
+  //   //   var form = $('#new_payment');
+
+  //   //   if (response.error) {
+  //   //     // Show the errors on the form
+  //   //     form.find('.payment-errors').text(response.error.message);
+  //   //     // form.find('button').prop('disabled', false);
+  //   //   } else {
+  //   //     // response contains id and card, which contains additional card details
+  //   //     var token = response.id;
+  //   //     // Insert the token into the form so it gets submitted to the server
+  //   //     form.append($('<input type="hidden" name="stripeToken" />').val(token));
+  //   //     // and submit
+  //   //     form.get(0).submit();
+  //   //   }
+  //   // };
+  // </script>

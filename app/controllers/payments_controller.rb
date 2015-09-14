@@ -15,6 +15,9 @@ class PaymentsController < ApplicationController
   # GET /payments/new
   def new  
     @parking = Parking.find_by_token(params[:token])
+    if current_user.stripe_customer_id.present?
+      @customer =  Stripe::Customer.retrieve(current_user.stripe_customer_id) 
+    end
     @payment = Payment.new
   end
 
@@ -29,24 +32,46 @@ class PaymentsController < ApplicationController
 
     @amount = @payment.amount * 100
 
-    customer = Stripe::Customer.create(
-      :email => 'amitk7075@gmail.com',
-      :card  => params[:stripeToken]
-    )
+    Stripe.api_key = 'sk_test_CfSPVwqeJbuCxJSnCDcXuKRG';
 
-    charge = Stripe::Charge.create(
-      :customer    => customer.id,
-      :amount      => @amount,
-      :description => 'Rails Stripe customer',
-      :currency    => 'usd'
-    )
+    begin
+      if current_user.stripe_customer_id.present?
+        @customer =  Stripe::Customer.retrieve(current_user.stripe_customer_id) 
+      else
+        card_details = {}
+        card_details[:name] = payment_params[:first_name]
+        card_details[:number] = payment_params[:credit_card_number]
+        card_details[:cvc] = payment_params[:card_security_code]
+        card_details[:exp_month] = payment_params[:expiration_month]
+        card_details[:exp_year] = payment_params[:expiration_year]
 
+        @card = Stripe::Token.create(card: card_details)
+        
+        @customer = Stripe::Customer.create(
+          :email => current_user.email,
+          :card  => @card.id
+        )
+
+        if @customer.present?
+          current_user.stripe_customer_id = @customer.id
+          current_user.save!
+        end
+      end
+
+
+      @charge = Stripe::Charge.create(
+        :customer    => @customer.id,
+        :amount      => @amount,
+        :description => 'Autopass payment',
+        :currency    => 'usd'
+      )
     rescue Stripe::CardError => e
       flash[:error] = e.message
-      
+    end  
+
     respond_to do |format|
       if @payment.save
-        format.html { redirect_to paymentreciept_path(@payment) , notice: 'Payment was successfully created. Vender will be notified.' }
+        format.html { redirect_to success_payment_path(@payment), notice: 'Payment was successfully created. Vender will be notified.' }
         format.json { render :show, status: :created, location: @payment }
       else
         format.html { render :new }
@@ -80,7 +105,7 @@ class PaymentsController < ApplicationController
   end
 
   def reciept
-    @payment = Payment.find(params[:format].to_i)
+    @payment = Payment.find(params[:id])
     @user = User.find(@payment.parking.vendor_id)
   end
 
